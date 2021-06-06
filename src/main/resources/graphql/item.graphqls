@@ -1,0 +1,26 @@
+# 定义一个查询类型
+extend type Query {
+    queryItemList: ItemList  # 定义查询项目列表
+    queryById(id: ID): Item
+}
+
+extend type Mutation {
+    updateName(param: Param): Item
+}
+
+# 定义项目字段
+type Item {
+    id: ID!
+    code: String!
+    name: String!
+}
+
+type ItemList {
+    itemList: [Item!]!  #获取项目列表
+    total: Int!      # 获取项目总数
+}
+
+input Param {
+    id: ID!
+    name: String!
+}

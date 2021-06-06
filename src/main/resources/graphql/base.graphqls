@@ -1,0 +1,14 @@
+schema {
+    # 查询
+    query: Query
+    # 更新
+    mutation: Mutation
+}
+
+type Query {
+    version: String
+}
+
+type Mutation {
+    version: String
+}
