@@ -13,6 +13,8 @@ type Item {
     id: ID!
     code: String!
     name: String!
+    createTime: Long
+    searchDate: Date
 }
 
 type ItemList {

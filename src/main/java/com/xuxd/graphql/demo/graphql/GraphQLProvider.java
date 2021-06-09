@@ -3,9 +3,12 @@ package com.xuxd.graphql.demo.graphql;
 import com.xuxd.graphql.demo.graphql.resolver.ItemResolver;
 import com.xuxd.graphql.demo.graphql.resolver.Mutation;
 import com.xuxd.graphql.demo.graphql.resolver.Query;
+import com.xuxd.graphql.demo.graphql.scalar.GraphQLScalarDateType;
 import com.xuxd.graphql.demo.service.IItemService;
 import graphql.GraphQL;
 import graphql.kickstart.tools.SchemaParser;
+import graphql.scalar.GraphqlLongCoercing;
+import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLSchema;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
@@ -42,6 +45,8 @@ public class GraphQLProvider {
             .resolvers(new ItemResolver(itemService))
 //            .file("book.graphqls")
 //            .resolvers(new BookResolver())  //其它定义照上面的示例，继续增加
+            .scalars(new GraphQLScalarType("Long", "long type", new GraphqlLongCoercing()))
+            .scalars(new GraphQLScalarDateType())
             .build().makeExecutableSchema();
 
         this.graphQL = graphQL.newGraphQL(graphQLSchema).build();

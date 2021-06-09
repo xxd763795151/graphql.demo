@@ -4,6 +4,7 @@ import com.xuxd.graphql.demo.beans.Item;
 import com.xuxd.graphql.demo.beans.ItemList;
 import com.xuxd.graphql.demo.beans.Param;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;
@@ -51,6 +52,8 @@ public class ItemDao {
         item.setId(id);
         item.setCode(code);
         item.setName(code + "项目");
+        item.setCreateTime(System.currentTimeMillis());
+        item.setSearchDate(new Date());
         return item;
     }
 }
